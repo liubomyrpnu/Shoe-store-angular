@@ -1,0 +1,12 @@
+<div class="products">
+  <h2>Наше взуття</h2>
+
+  <div class="product-list">
+    <div class="product-card" *ngFor="let product of products">
+      <img [src]="product.image" [alt]="product.name" />
+      <h3>{{ product.name }}</h3>
+      <p>{{ product.price }} грн</p>
+      <button (click)="addToCart(product)">Додати в кошик</button>
+    </div>
+  </div>
+</div>
