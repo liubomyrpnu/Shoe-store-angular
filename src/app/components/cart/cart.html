@@ -1,1 +1,17 @@
-<p>cart works!</p>
+<h2>Кошик</h2>
+
+<div *ngIf="items.length === 0">
+  <p>Ваш кошик порожній.</p>
+</div>
+
+<div *ngIf="items.length > 0">
+  <div *ngFor="let item of items" class="cart-item">
+    <img [src]="item.image" alt="{{ item.name }}" class="cart-item-img">
+    <div class="cart-item-info">
+      <h3>{{ item.name }}</h3>
+      <p>Ціна: {{ item.price }} грн</p>
+    </div>
+  </div>
+
+  <button (click)="clearCart()">Очистити кошик</button>
+</div>
