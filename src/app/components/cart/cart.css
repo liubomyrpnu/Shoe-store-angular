@@ -31,3 +31,22 @@ button {
 button:hover {
   background-color: #e04848;
 }
+
+h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+img {
+  object-fit: cover;
+}
+
+table {
+  background-color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+button {
+  border-radius: 8px;
+}

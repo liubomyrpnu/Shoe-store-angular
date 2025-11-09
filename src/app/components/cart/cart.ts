@@ -9,15 +9,26 @@ import { CartService } from '../../services/cart.service';
   templateUrl: './cart.html',
   styleUrls: ['./cart.css']
 })
-export class Cart {
-  items: any[] = [];
+export class CartComponent {
+  cartItems: any[] = [];
 
-  constructor(private cartService: CartService) {
-    this.items = this.cartService.getItems();
+  constructor(private cartService: CartService) {}
+
+  ngOnInit() {
+    this.cartItems = this.cartService.getCart();
+  }
+
+  removeItem(index: number) {
+    this.cartService.removeFromCart(index);
+    this.cartItems = this.cartService.getCart();
   }
 
   clearCart() {
     this.cartService.clearCart();
-    this.items = [];
+    this.cartItems = [];
+  }
+
+  getTotal() {
+    return this.cartItems.reduce((total, item) => total + item.price, 0);
   }
 }

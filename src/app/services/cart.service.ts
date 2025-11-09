@@ -4,18 +4,21 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class CartService {
-  private items: any[] = [];
+  private cart: any[] = [];
 
   addToCart(product: any) {
-    this.items.push(product);
-    alert(`${product.name} додано до кошика!`);
+    this.cart.push(product);
   }
 
-  getItems() {
-    return this.items;
+  getCart() {
+    return this.cart;
+  }
+
+  removeFromCart(index: number) {
+    this.cart.splice(index, 1);
   }
 
   clearCart() {
-    this.items = [];
+    this.cart = [];
   }
 }

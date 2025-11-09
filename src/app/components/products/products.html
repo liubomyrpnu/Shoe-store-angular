@@ -1,12 +1,20 @@
-<div class="products">
-  <h2>Наше взуття</h2>
-
-  <div class="product-list">
-    <div class="product-card" *ngFor="let product of products">
-      <img [src]="product.image" [alt]="product.name" />
-      <h3>{{ product.name }}</h3>
-      <p>{{ product.price }} грн</p>
-      <button (click)="addToCart(product)">Додати в кошик</button>
+<div class="container mt-5">
+  <h2 class="text-center mb-4">Каталог взуття</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col" *ngFor="let product of products">
+      <div class="card h-100 shadow-sm">
+        <img [src]="product.image" class="card-img-top" alt="{{ product.name }}" />
+        <div class="card-body">
+          <h5 class="card-title">{{ product.name }}</h5>
+          <p class="card-text text-muted">{{ product.description }}</p>
+          <h6 class="text-success">{{ product.price | currency:'UAH':'symbol':'1.0-0' }}</h6>
+        </div>
+        <div class="card-footer bg-transparent border-0 text-center">
+          <button class="btn btn-primary w-100" (click)="addToCart(product)">
+            <i class="bi bi-cart-plus"></i> Додати в кошик
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
