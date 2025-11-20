@@ -1,37 +1,33 @@
-<div class="container mt-5">
-  <h2 class="text-center mb-4">🛒 Мій кошик</h2>
+<div class="container mt-5 cart-wrapper">
+  <h2 class="text-center mb-4 fw-bold">🛒 Мій кошик</h2>
 
-  <div *ngIf="cartItems.length === 0" class="text-center text-muted">
-    Кошик порожній 😔
+  <div *ngIf="cartItems.length === 0" class="empty text-center">
+    <img src="assets/empty-cart.png" class="empty-img" alt="empty">
+    <p>Кошик порожній 😔</p>
   </div>
 
   <div *ngIf="cartItems.length > 0">
-    <table class="table table-bordered table-striped">
-      <thead class="table-dark text-center">
-        <tr>
-          <th>Зображення</th>
-          <th>Назва</th>
-          <th>Ціна</th>
-          <th>Дія</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let item of cartItems; let i = index">
-          <td class="text-center">
-            <img [src]="item.image" alt="{{ item.name }}" width="80" height="80" class="rounded">
-          </td>
-          <td>{{ item.name }}</td>
-          <td>{{ item.price | currency: 'UAH' }}</td>
-          <td class="text-center">
-            <button class="btn btn-danger btn-sm" (click)="removeItem(i)">Видалити</button>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+    <div class="cart-list">
+      <div *ngFor="let item of cartItems; let i = index" class="cart-card shadow-sm">
 
-    <div class="d-flex justify-content-between align-items-center mt-4">
-      <h4>Загальна сума: {{ getTotal() | currency: 'UAH' }}</h4>
-      <button class="btn btn-outline-danger" (click)="clearCart()">Очистити кошик</button>
+        <img [src]="item.image" alt="{{ item.name }}" class="cart-img">
+
+        <div class="cart-info">
+          <h4>{{ item.name }}</h4>
+          <p class="price">{{ item.price | currency:'UAH' }}</p>
+        </div>
+
+        <button class="remove-btn" (click)="removeItem(i)">✖</button>
+      </div>
+    </div>
+
+    <div class="total-box shadow-sm mt-4">
+      <h4>Загальна сума:</h4>
+      <h3 class="total">{{ getTotal() | currency:'UAH' }}</h3>
+    </div>
+
+    <div class="text-end mt-3">
+      <button class="btn btn-danger px-4" (click)="clearCart()">Очистити кошик</button>
     </div>
   </div>
 </div>
