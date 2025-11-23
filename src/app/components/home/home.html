@@ -1,53 +1,100 @@
-<div class="about-container">
-
-  <section class="about-section">
-  <div class="about-wrapper">
-    <div class="about-content">
-      <h2>Про ShoeStore</h2>
-      <p>
-        Ми створюємо стиль та комфорт у кожній парі взуття.  
-        Наша місія — забезпечити тебе модними, якісними та зручними моделями,  
-        які підкреслять твій стиль у будь-якій ситуації.
+<section class="home-hero" id="hero">
+  <div class="hero-inner container">
+    <div class="hero-left">
+      <span class="eyebrow">NEW DROP</span>
+      <h1 class="hero-title">STREET VIBES — LIMITED EDITION</h1>
+      <p class="hero-sub">
+        Fresh drops, bold looks — step into the streets with confidence.
+        Limited releases. Bold designs. Streetwear curated for you.
       </p>
+      <div class="hero-cta">
+        <a routerLink="/products" class="btn btn-dark btn-lg">Переглянути колекцію</a>
+        <a routerLink="/products" class="btn btn-outline-light btn-lg ms-3">Новинки</a>
+      </div>
+    </div>
+
+    <div class="hero-right">
+      <div class="hero-image" aria-hidden="true"></div>
     </div>
   </div>
 </section>
 
-  <section class="about-section container">
-    <h2>Хто ми?</h2>
-    <p>
-      ShoeStore — сучасний онлайн-магазин взуття, де стиль поєднується з комфортом.
-      Ми пропонуємо якісну продукцію від топових брендів, щоб кожен міг знайти пару, яка
-      ідеально підходить саме йому.
-    </p>
-
-    <div class="about-images">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff" alt="Shoes">
-      <img src="https://images.unsplash.com/photo-1526170375885-4d8ecf77b99f" alt="Store">
+<section class="collections container" id="collections">
+  <h2 class="section-title" data-anim>Колекції</h2>
+  <div class="row g-4">
+    <div class="col-md-4" data-anim>
+      <a routerLink="/products" class="collection-card">
+        <div class="collection-bg" style="background-image:url('/assets/home/col1.jpg')"></div>
+        <div class="collection-info">
+          <h3>New Drops</h3>
+          <p>Свіжі релізи сезону</p>
+        </div>
+      </a>
     </div>
-  </section>
+    <div class="col-md-4" data-anim>
+      <a routerLink="/products" class="collection-card">
+        <div class="collection-bg" style="background-image:url('/assets/home/col2.jpg')"></div>
+        <div class="collection-info">
+          <h3>Limited Edition</h3>
+          <p>Ексклюзивні партії</p>
+        </div>
+      </a>
+    </div>
+    <div class="col-md-4" data-anim>
+      <a routerLink="/products" class="collection-card">
+        <div class="collection-bg" style="background-image:url('/assets/home/col3.jpg')"></div>
+        <div class="collection-info">
+          <h3>Street Essentials</h3>
+          <p>Класика для щоденного лука</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
 
-  <section class="why-us container">
-    <h2>Чому ми?</h2>
-
-    <div class="advantages">
-      <div class="adv-card">
-        <span class="icon">🔥</span>
-        <h3>Тільки трендові моделі</h3>
-        <p>Ми постійно додаємо найсвіжіші колекції сезону.</p>
-      </div>
-
-      <div class="adv-card">
-        <span class="icon">⭐</span>
-        <h3>Висока якість</h3>
-        <p>У нашому каталозі — лише перевірені та якісні бренди.</p>
-      </div>
-
-      <div class="adv-card">
-        <span class="icon">⚡</span>
-        <h3>Швидка доставка</h3>
-        <p>Ми надсилаємо замовлення в той самий день!</p>
+<section class="featured container" id="featured">
+  <h2 class="section-title" data-anim>Хіти продажів</h2>
+  <div class="row g-4">
+    <div class="col-sm-6 col-md-3" *ngFor="let p of products.slice(0,4)" data-anim>
+      <div class="product-card">
+        <div class="prod-img" [style.background-image]="'url(' + (p.image || '/assets/home/default-shoe.jpg') + ')'" ></div>
+        <div class="prod-body">
+          <h5>{{p.name}}</h5>
+          <div class="prod-bottom">
+            <span class="price">{{p.price | currency:'UAH'}}</span>
+            <button class="btn btn-sm btn-dark" (click)="addToCart(p)">
+              <i class="bi bi-cart-plus"></i>
+            </button>
+          </div>
+        </div>
       </div>
     </div>
-  </section>
-</div>
+  </div>
+</section>
+
+<section class="promo-banner" id="promo" data-anim>
+  <div class="promo-inner container">
+    <div class="promo-left">
+      <h3 class="promo-title">🔥 LIMITED DROP</h3>
+      <p class="promo-subtitle">Не для всіх.</p>
+      <p class="promo-desc">Цей реліз не повториться — хто встиг, той забрав.</p>
+
+      <a routerLink="/products" class="btn btn-outline-light mt-2">Деталі</a>
+    </div>
+
+    <div class="promo-right">
+      <img src="/assets/home/promo-shoe.jpg" alt="promo" />
+    </div>
+  </div>
+</section>
+
+<section class="home-cta container" id="cta">
+  <div class="cta-box" data-anim>
+    <h4>Підписуйся на оновлення</h4>
+    <p>Отримуй сповіщення про нові релізи та ексклюзивні знижки</p>
+    <div class="d-flex gap-2 justify-content-center mt-3">
+      <input class="form-control w-50" placeholder="Ваша email-адреса" />
+      <button class="btn btn-primary">Підписатися</button>
+    </div>
+  </div>
+</section>
