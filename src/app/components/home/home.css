@@ -99,11 +99,11 @@
 .prod-bottom { display:flex; justify-content:space-between; align-items:center; }
 
 .promo-banner {
-  background: #0c0c0c;
+  background: linear-gradient(135deg, #0a0a0a, #1a1a1a);
   border: 3px solid #fff;
   padding: 50px 0;
   margin-top: 40px;
-  border-radius: 0px;
+  border-radius: 20px; 
   color: white;
   position: relative;
   overflow: hidden;
@@ -112,13 +112,14 @@
 .promo-banner::after {
   content: "LIMITED EDITION";
   position: absolute;
-  top: -40px;
-  right: -120px;
+  top: -50px;
+  right: -140px;
   transform: rotate(35deg);
-  font-size: 4.6rem;
+  font-size: 4.4rem;
   font-weight: 900;
-  color: rgba(255,255,255,0.06);
+  color: rgba(255,255,255,0.05);
   letter-spacing: 4px;
+  pointer-events: none;
 }
 
 .promo-inner {
@@ -152,15 +153,23 @@
   text-transform: uppercase;
 }
 
-.promo-right img {
-  width: 210px;
-  border-radius: 12px;
-  filter: saturate(1.25) contrast(1.15);
-  transform: rotate(-6deg);
-  transition: 0.4s ease;
+.promo-gallery {
+  display: flex;
+  gap: 16px;
 }
-.promo-right img:hover {
-  transform: rotate(-10deg) scale(1.05);
+
+.promo-gallery img {
+  width: 160px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 14px;
+  filter: saturate(1.2) contrast(1.1);
+  transition: .35s ease;
+  box-shadow: 0 10px 24px rgba(0,0,0,0.45);
+}
+
+.promo-gallery img:hover {
+  transform: translateY(-6px);
 }
 
 .home-cta { margin-top:40px; margin-bottom:40px; }
@@ -185,7 +194,8 @@
   .hero-image { width: 90%; height: 320px; }
 
   .promo-inner { flex-direction: column; text-align: center; }
-  .promo-right img { width:150px; transform:none; }
+  .promo-gallery { justify-content:center; }
+  .promo-gallery img { width:120px; height:150px; }
 }
 
 [data-anim] {

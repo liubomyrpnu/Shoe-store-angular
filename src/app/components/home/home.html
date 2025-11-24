@@ -57,7 +57,7 @@
   <div class="row g-4">
     <div class="col-sm-6 col-md-3" *ngFor="let p of products.slice(0,4)" data-anim>
       <div class="product-card">
-        <div class="prod-img" [style.background-image]="'url(' + (p.image || '/assets/home/default-shoe.jpg') + ')'" ></div>
+        <div class="prod-img" [style.background-image]="'url(' + (p.image || '/assets/home/default-shoe.jpg') + ')'"></div>
         <div class="prod-body">
           <h5>{{p.name}}</h5>
           <div class="prod-bottom">
@@ -72,19 +72,22 @@
   </div>
 </section>
 
+<!-- 🔥 NEW UPDATED LIMITED DROP BLOCK -->
 <section class="promo-banner" id="promo" data-anim>
   <div class="promo-inner container">
+
     <div class="promo-left">
-      <h3 class="promo-title">🔥 LIMITED DROP</h3>
-      <p class="promo-subtitle">Не для всіх.</p>
-      <p class="promo-desc">Цей реліз не повториться — хто встиг, той забрав.</p>
-
-      <a routerLink="/products" class="btn btn-outline-light mt-2">Деталі</a>
+      <h2>🔥 LIMITED DROP</h2>
+      <p>Не для всіх.<br>Цей реліз не повториться — хто встиг, той забрав.</p>
+      <div class="tag">ONLY THIS MONTH</div>
     </div>
 
-    <div class="promo-right">
-      <img src="/assets/home/promo-shoe.jpg" alt="promo" />
+    <div class="promo-gallery">
+      <img src="/assets/home/promo1.jpg" alt="img1">
+      <img src="/assets/home/promo2.jpg" alt="img2">
+      <img src="/assets/home/promo3.jpg" alt="img3">
     </div>
+
   </div>
 </section>
 
